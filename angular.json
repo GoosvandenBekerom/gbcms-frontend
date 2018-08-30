@@ -12,7 +12,7 @@
         "@schematics/angular:component": {
           "styleext": "css",
           "spec": false
-        },t
+        },
         "@schematics/angular:class": {
           "spec": false
         },
