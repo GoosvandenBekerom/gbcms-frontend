@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
+import {ToastService} from '../../services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,10 @@ export class LoginComponent implements OnInit {
   password: string;
   loading: boolean;
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit() {
     this.loading = false;
@@ -26,10 +30,13 @@ export class LoginComponent implements OnInit {
 
     this.auth.login(this.username, this.password)
       .subscribe(
-        () => this.loading = false,
         () => {
-              console.log('Invalid username or password.');
-              this.loading = false;
-      });
+            this.toastService.toastSuccess('Login successful');
+            this.loading = false;
+          },
+        () => {
+            this.toastService.toastError('Invalid username or password.');
+            this.loading = false;
+          });
   }
 }

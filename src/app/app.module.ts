@@ -6,11 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+import { ToastService } from './services/toast.service';
+import { AuthService } from './services/auth.service';
 
 import {PanelModule} from 'primeng/panel';
-import {InputTextModule} from 'primeng/primeng';
+import {InputTextModule, MessageService} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/button';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
@@ -26,9 +29,14 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     PanelModule,
     InputTextModule,
     ButtonModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [
+    MessageService,
+    AuthService,
+    ToastService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
