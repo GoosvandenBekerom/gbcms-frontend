@@ -17,12 +17,16 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {ToastModule} from 'primeng/toast';
 import {JwtInterceptor} from './interceptors/jwt.interceptor';
 import {HttpErrorInterceptor} from './interceptors/httperror.interceptor';
+import { AdminComponent } from './components/admin/admin.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

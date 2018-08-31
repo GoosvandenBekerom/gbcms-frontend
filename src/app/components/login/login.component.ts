@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {ToastService} from '../../services/toast.service';
+import {HttpParams} from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +16,17 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.loading = false;
+
+    if (AuthService.getLoggedInToken()) {
+      this.router.navigate(['/admin']);
+    }
   }
 
   onLoginClick() {
@@ -33,6 +41,10 @@ export class LoginComponent implements OnInit {
         () => {
             this.toastService.toastSuccess('Login successful');
             this.loading = false;
+            this.route.queryParams.subscribe(params => {
+              const url = params['returnUrl'] || '/admin';
+              this.router.navigate([url]);
+            });
           },
         () => {
             this.toastService.toastError('Invalid username or password.');
