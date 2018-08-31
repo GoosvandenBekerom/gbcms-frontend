@@ -1,3 +1,15 @@
-<p>
-  admin works!
-</p>
+<div class="ui-g">
+  <div id="navbar" class="ui-g-12 bg-dark">
+    <b>GBCMS</b>
+    <p-button label="Logout" icon="fa fa-sign-out" styleClass="ui-button-secondary" class="right"
+              (onClick)="onLogoutClick($event)"></p-button>
+  </div>
+  <div class="ui-g-12 ui-lg-offset-1 ui-lg-10 ui-xl-offset-2 ui-xl-8">
+    <p-tabMenu #tabMenu [model]="items" [activeItem]="items[0]"></p-tabMenu>
+
+    <app-post-overview [hidden]="tabMenu.activeItem !== items[0]"></app-post-overview>
+
+    <app-topic-overview [hidden]="tabMenu.activeItem !== items[1]"></app-topic-overview>
+
+  </div>
+</div>
