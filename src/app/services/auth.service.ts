@@ -20,4 +20,8 @@ export class AuthService {
         tap(token => localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, token))
       );
   }
+
+  logout() {
+    localStorage.removeItem(LOCALSTORAGE_TOKEN_KEY);
+  }
 }
