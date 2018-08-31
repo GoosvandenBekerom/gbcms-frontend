@@ -1,33 +1,31 @@
 <div class="ui-g-12 ui-md-6 ui-lg-4 ui-md-offset-3 ui-lg-offset-4">
   <p-panel header="Login">
-    <div class="ui-g ui-fluid">
 
-      <form #loginForm (submit)="onLoginClick()">
+    <form #loginForm class="ui-g ui-fluid" (submit)="onLoginClick()">
 
-        <div class="ui-g-12">
-          <div class="ui-inputgroup">
-            <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-            <input type="text" name="username" pInputText placeholder="Username" [(ngModel)]="username">
-          </div>
+      <div class="ui-g-12">
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+          <input type="text" name="username" pInputText placeholder="Username" [(ngModel)]="username">
         </div>
+      </div>
 
-        <div class="ui-g-12">
-          <div class="ui-inputgroup">
-            <span class="ui-inputgroup-addon"><i class="fa fa-lock"></i></span>
-            <input type="password" name="password" pInputText placeholder="Password" [(ngModel)]="password">
-          </div>
+      <div class="ui-g-12">
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon"><i class="fa fa-lock"></i></span>
+          <input type="password" name="password" pInputText placeholder="Password" [(ngModel)]="password">
         </div>
+      </div>
 
-        <div class="ui-g-4 ui-g-offset-8" [hidden]="loading">
-          <button pButton label="Login" type="submit" class="pull-right"></button>
-        </div>
+      <div class="ui-g-4 ui-g-offset-8" [hidden]="loading">
+        <button pButton label="Login" type="submit" class="pull-right"></button>
+      </div>
 
-        <div class="ui-g-12" [hidden]="!loading" >
-          <p-progressSpinner class="pull-right"[style]="{width: '35px', height: '35px'}" strokeWidth="6" fill="#EEEEEE" animationDuration="1s"></p-progressSpinner>
-        </div>
+      <div class="ui-g-12" [hidden]="!loading" >
+        <p-progressSpinner class="pull-right"[style]="{width: '35px', height: '35px'}" strokeWidth="6" fill="#EEEEEE" animationDuration="1s"></p-progressSpinner>
+      </div>
 
-      </form>
+    </form>
 
-    </div>
   </p-panel>
 </div>

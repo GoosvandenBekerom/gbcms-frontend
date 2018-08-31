@@ -10,6 +10,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  static getLoggedInToken() {
+    return localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);
+  }
+
   login(username: string, password: string) {
     const body = new HttpParams({fromObject: {username, password}});
     const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
@@ -22,6 +26,7 @@ export class AuthService {
   }
 
   logout() {
+    // Not static because there might be other things needed to be done on logout
     localStorage.removeItem(LOCALSTORAGE_TOKEN_KEY);
   }
 }
